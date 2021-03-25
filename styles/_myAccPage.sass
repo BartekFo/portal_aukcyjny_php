@@ -1,0 +1,146 @@
+.myAcc_wrapper
+    display: flex
+    &_menuContainer
+        display: flex
+        flex-direction: column
+        width: 30%
+        justify-content: space-evenly
+        align-items: center
+        height: 90vh
+        &_menu
+            background-color: $theme_blue
+            display: flex
+            flex-direction: column
+            font-size: 1.5rem
+            width: 330px
+            height: 200px
+            justify-content: space-evenly
+            padding-left: 20px
+            border: 2px solid $text_color
+
+            #selected
+                font-weight: bold
+        &_imgContainer
+            display: flex
+            justify-content: center
+            align-items: center
+            &_img
+                width: 350px
+
+.myAcc_wrapper_dataWrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 70%
+
+.myAcc_wrapper_dataContainer
+    background-color: $theme_blue
+    width: 80%
+    height: 90%
+    border: 2px solid $text_color
+    padding-bottom: 30px
+    &_title
+        margin: 30px 67px 10px
+    &_data
+        margin-left: 67px
+    &_changeDataBtn
+        background: none
+        border: none
+        text-decoration: underline
+        font-size: 2rem
+        color: $text_color
+        margin-left: 67px
+        cursor: pointer
+
+
+.invisible
+    display: none
+    visibility: hidden
+
+.myAcc_wrapper_dataContainer
+    &_form
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+    &_inputWrapper
+        margin: 30px 67px 10px
+        height: 40px
+        position: relative
+        width: 250px
+        &_input
+            height: 100%
+            width: 100%
+            border: none
+            border-bottom: 2px solid silver
+            outline: none
+            font-size: 17px
+            background: $theme_blue
+        &_label
+            position: absolute
+            bottom: 10px
+            left: 0px
+            color: grey
+            pointer-events: none
+            transition: all 0.3s ease
+        &_input:focus ~ &_label,
+        &_input:valid ~ &_label
+            transform: translateY(-20px)
+            font-size: 14px
+            color: $text_color
+        &_underline
+            position: absolute
+            bottom: 0px
+            height: 2px
+            width: 100%
+        &_underline::before
+            position: absolute
+            content: ""
+            height: 100%
+            width: 100%
+            background: $text_color
+            transform: scaleX(0)
+            transition: transform 0.3s ease
+
+        &_input:focus ~ &_underline::before,
+        &_input:valid ~ &_underline::before
+            transform: scaleX(1)
+
+.myAcc_wrapper_dataContainer_btn
+    width: 250px
+    background-color: $button_color
+    height: 50px
+    color: white
+    border-radius: 31px
+    border: white
+    cursor: pointer
+    margin: 40px 67px 50px
+
+.myAcc_wrapper_dataContainer_btnCancel
+    background: none
+    border: none
+    text-decoration: underline
+    font-size: 1.2rem
+    color: $text_color
+    cursor: pointer
+    width: 250px
+
+
+
+@media screen and ( max-width: 1050px )
+    .myAcc_wrapper
+        flex-direction: column
+        &_menuContainer
+            width: 100%
+            height: 350px
+            &_imgContainer
+                display: none
+                visibility: hidden
+        &_dataWrapper
+            width: 100%
+            margin-bottom: 20px
+
+@media screen and ( max-width: 500px )
+    .myAcc_wrapper_dataContainer
+        &_inputWrapper
+            margin: 30px 17px 10px

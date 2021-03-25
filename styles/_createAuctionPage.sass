@@ -1,0 +1,118 @@
+.createAuction_formWrapper
+    width: 90%
+    border: 2px solid $text_color
+    padding: 34px 90px
+    margin-top: 45px
+    margin-bottom: 50px
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    &_title
+        margin-top: 30px
+        margin-bottom: 30px
+    &_inputWrapper
+        position: relative
+        height: 40px
+        width: 250px
+        &_input
+            height: 100%
+            width: 100%
+            border: none
+            border-bottom: 2px solid silver
+            outline: none
+            font-size: 17px
+            background: white
+        &_underline
+            position: absolute
+            bottom: 0px
+            height: 2px
+            width: 100%
+        &_input:focus ~ &_label,
+        &_input:valid ~ &_label
+            transform: translateY(-20px)
+            font-size: 14px
+            color: $text_color
+        &_label
+            position: absolute
+            bottom: 10px
+            left: 0px
+            color: grey
+            pointer-events: none
+            transition: all 0.3s ease
+        &_underline::before
+            position: absolute
+            content: ""
+            height: 100%
+            width: 100%
+            background: $text_color
+            transform: scaleX(0)
+            transition: transform 0.3s ease
+        &_input:focus ~ &_underline::before,
+        &_input:valid ~ &_underline::before
+            transform: scaleX(1)
+        &_textareaLabel
+            margin-top: 25px
+            margin-bottom: 15px
+            color: grey
+            display: block
+            pointer-events: none
+        &_textarea:focus ~ &_textareaLabel
+            color: $text_color
+        &_textarea
+            margin-bottom: 20px
+
+input[type=radio]
+    display: none
+
+.selectedRadio
+    border: 2px solid $text_color !important
+
+.createAuction_formWrapper_inputWrapper
+    &_radioLabel
+        display: flex
+        border: 1px solid silver
+        flex-direction: column
+        justify-content: center
+        padding: 0 20px
+        width: 400px
+        height: 120px
+        margin: 20px 0
+        font-weight: bold
+        color: $text_color
+        &_span
+            font-weight: 400
+            color: $button_color
+    &_checkboxWrapper
+        display: flex
+        flex-direction: column
+    &_checkboxLabel
+        font-size: 1.4rem
+        color: $button_color
+        margin: 20px 0
+    &_checkbox
+        display: none
+
+.checkboxIcon
+    border: 2px solid $text_color
+    border-radius: 10px
+    padding: 5px
+    color: white
+
+.visibleChecboxItem
+    color: $button_color !important
+
+@media screen and ( max-width: 680px )
+    .createAuction_formWrapper
+        width: 100%
+        padding: 34px 35px
+
+@media screen and ( max-width: 500px )
+    .createAuction_formWrapper
+        width: 100%
+        padding: 34px 10px
+        &_inputWrapper_radioLabel
+            width: 95%
+            height: none

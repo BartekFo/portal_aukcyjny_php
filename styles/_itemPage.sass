@@ -1,0 +1,111 @@
+.itemPage_container
+    display: flex
+    &_imgContainer
+        height: 90vh
+        width: 50%
+        display: flex
+        justify-content: center
+        align-items: center
+        &_img
+            border: 1px solid $text_color
+            height: 500px
+            width: 550px
+
+    &_infoContainer
+        display: flex
+        justify-content: center
+        flex-direction: column
+        align-items: center
+        text-align: left
+        &_textContainer
+            width: 460px
+        &_itemName, &_price
+            font-size: 2rem
+            margin-bottom: 30px
+        &_deliveryInfo
+            margin-top: 20px
+            width: 460px
+            &_title
+                margin-bottom: 20px
+            &_p
+                margin-bottom: 20px
+        &_priceInputContainer
+            &_label
+                position: relative
+                padding-top: 20px
+                margin-bottom: 5px
+            &_priceInput
+                border: none
+                -webkit-appearance: none
+                -moz-appearance: none
+                appearance: none
+                border: 2px solid #ddd
+                padding: 12px
+                border-radius: $border-radius
+                font-size: 1.3rem
+                width: 136px
+                outline: none
+                transition: border-color 1s ease
+            &_placeholder
+                position: absolute
+                left: 12px
+                top: calc( 50% + 8px )
+                color: #aaa
+                font-size: 1.3rem
+                transform: translateY(-50%)
+                transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease
+            &_priceInput:valid + &_placeholder,&_priceInput:focus + &_placeholder
+                top: 4px
+                font-size: 1rem
+                color: $text_color
+                background-color: #fff
+            &_priceInput:valid, &_priceInput:focus
+                border-color: $text_color
+                transition-delay: 0.1s
+            &_priceInput + &_placeholder
+                padding: 0 5px
+                left: 6px
+            &_auctionEndInfo
+                margin-top: 10px
+                color: #aaa
+            &_submitButton
+                width: 460px
+                height: 40px
+                border: 1px solid white
+                background-color: $button_color
+                color: white
+                border-radius: $border-radius
+                font-weight: 700
+                font-size: 1.5rem
+                margin-top: 20px
+            &_submitButton:hover
+                background: #0055c3
+
+hr
+    width: 460px
+    border: 1px solid $text_color
+
+.itemPage_aboutItemSection
+    margin: 150px 140px 100px
+    &_title
+        margin-bottom: 50px
+
+@media screen and ( max-width: 1250px )
+    .itemPage_container
+        flex-direction: column
+        &_imgContainer
+            width: 100%
+
+@media screen and ( max-width: 750px )
+    .itemPage_aboutItemSection
+        margin: 80px 30px
+
+@media screen and ( max-width: 650px )
+    .itemPage_container_imgContainer
+        height: 70vh
+        &_img
+            height: 80vw
+            width: 85vw
+    .itemPage_container_infoContainer
+        &_textContainer, &_deliveryInfo, &_priceInputContainer_submitButton, hr
+            width: 80vw

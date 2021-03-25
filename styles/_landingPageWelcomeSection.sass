@@ -1,0 +1,102 @@
+.welcomeSection
+    display: grid
+    grid-template-columns: 0.545fr 1.5fr
+    grid-template-rows: 1fr
+    grid-template: ". ." "."
+
+    &_sidebar--blue
+        height: 91.8vh
+        background: $darker_blue
+        position: relative
+
+    &_sidebar_socialbar
+        display: flex
+        align-items: center
+        justify-content: space-around
+        background: $card_blue
+        height: 10vh
+        position: absolute
+        bottom: 0
+        width: 100%
+        i
+            font-size: 2rem
+            color: $text_color
+    &_sidebar_socialbar_phone
+        display: none
+        visibility: hidden
+
+    &_sidebar_image
+        width: 60vh
+        background-image: url("../images/gone_shopping.svg")
+        height: 60vh
+        padding: 0
+        right: -10rem
+        position: absolute
+        margin-top: 4rem
+        background-size: cover
+
+    &_sidebar--white
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        text-align: left
+        &_text
+            display: flex
+            flex-direction: column
+            justify-content: space-evenly
+            width: 45vw
+            height: 29rem
+            &_title
+                font-size: 3.5rem
+
+            &_p
+                font-size: 1.5rem
+
+@media screen and ( max-width: 1366px )
+    .welcomeSection_sidebar--white_text
+        &_title
+            font-size: 3rem
+        &_p
+            font-size: 1.6rem
+
+@media screen and ( max-width: 1024px )
+    .welcomeSection
+        &_sidebar_image
+            display: none
+
+    .welcomeSection_sidebar--white_text
+        width: 77vw
+        margin: 0px 10vw 0px
+
+    .welcomeSection_sidebar_socialbar
+        display: none
+        visibility: hidden
+    .welcomeSection_sidebar_socialbar_phone
+        background: white
+        visibility: visible
+        display: flex
+        align-items: center
+        justify-content: space-around
+        z-index: -1
+        height: 10vh
+        position: absolute
+        bottom: 0
+        width: 100%
+        i
+            font-size: 2rem
+            color: $text_color
+
+@media screen and ( max-width: 450px )
+    .welcomeSection_sidebar--white_text
+        &_title
+            font-size: 2rem
+        &_p
+            font-size: 1.3rem
+
+@media screen and ( max-width: 320px )
+    .welcomeSection_sidebar--white_text
+        &_title
+            font-size: 1.5rem
+        &_p
+            font-size: 1rem

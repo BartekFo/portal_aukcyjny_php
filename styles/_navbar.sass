@@ -1,0 +1,208 @@
+.navbar
+    height: 80px
+    display: grid
+    grid-template-columns: 0.8fr 1.4fr 0.8fr
+    grid-template-rows: 1fr
+    gap: 0px 0px
+    grid-template-areas: "logo links signin"
+    border-bottom: 1px solid $text_color
+
+
+.nav-item
+    text-decoration: none
+    font-size: 1.7rem
+    cursor: pointer
+    color: $text_color
+
+
+
+.nav-item:visited, .nav-item:hover, .nav-item:active, a:visited, a:hover, a:active
+    color: $text_color
+    text-decoration: none
+    color: $text_color
+
+.nav-logo
+    font-family: $logo_font
+    font-size: 4rem
+    min-width: 10rem
+    display: flex
+    height: 100%
+    align-items: center
+    justify-content: center
+    grid-area: logo
+
+.nav-links
+    display: flex
+    list-style: none
+    padding: 0px 40px
+    height: 100%
+    justify-content: space-around
+    align-items: center
+    grid-area: links
+
+.nav-signin
+    grid-area: signin
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100%
+
+.phone-nav-signin
+    display: none !important
+
+.dropdown
+    position: relative
+
+.dropdown:hover > .dropdown-list
+    opacity: 1
+    visibility: visible
+
+
+.dropdown-list
+    position: absolute
+    left: -50%
+    top: 100%
+    transform: translateX(-20%)
+    display: grid
+    margin-top: 3px
+    width: 500px
+    height: 230px
+    z-index: 2
+    list-style: none
+    border: 2px solid $text_color
+    background: white
+    grid-template-columns: 1.5fr 1.5fr
+    grid-template-rows: 1fr 1fr 1fr 1fr
+    gap: 0px 0px
+    grid-template-areas: ".  ." ".  ." ".  ." ".  ."
+    align-items: center
+    opacity: 0
+    visibility: hidden
+    .verticalLine
+        border-right: 2px solid $text_color
+        height: 100%
+        display: flex
+        align-items: center
+
+.link-container
+    height: 100%
+    display: flex
+    align-items: center
+
+
+.tooltip
+  position: relative
+
+
+.tooltip .tooltiptext
+    visibility: hidden
+    width: 220px
+    background-color: black
+    color: #fff
+    text-align: center
+    border-radius: 6px
+    padding: 10px 5px
+
+    /* Position the tooltip */
+    position: absolute
+    z-index: 1
+    top: 100%
+    left: 50%
+    transform: translateX(-20%)
+    margin-left: -60px
+
+.tooltip:hover .tooltiptext
+  visibility: visible
+
+
+
+.link-container:hover
+    border-bottom: 2px solid $text_color
+
+.dropdown-item
+    font-weight: bold
+    font-size: 1.5rem
+    color: $button_color !important
+    padding-left: 20px
+
+.inDevelopment
+    color: grey !important
+    opacity: 0.7
+    pointer-events: none
+
+.inDevelopment:hover
+    color: grey
+
+@media screen and ( max-width: 1024px  )
+
+    .line
+        width: 30px
+        height: 3px
+        background: $text_color
+        margin: 5px
+
+    .nav-links
+        position: fixed
+        background: $card_blue
+        height: 100vh
+        width: 100%
+        flex-direction: column
+        justify-content: flex-start
+        clip-path: circle(0px at 90% -10%)
+        -webkit-clip-path: circle(0px at 90% -10%)
+        transition: all 1s ease-out
+        pointer-events: none
+
+    .nav-links.open
+        clip-path: circle(1400px at 90% -10%)
+        -webkit-clip-path: circle(1400px at 90% -10%)
+        pointer-events: all
+
+    nav
+        position: relative
+
+    .hamburger
+        position: absolute
+        cursor: pointer
+        right: 5%
+        top: 50%
+        transform: translate(-5%, -50%)
+        z-index: 2
+
+    .phone-nav-signin
+        display: flex !important
+
+    .nav-signin
+        display: none
+
+    .link-container
+        opacity: 0
+        height: 30%
+
+    .nav-item
+        font-size: 3rem
+
+    .nav-logo
+        font-size: 4rem
+
+    .link-container:nth-child(1)
+        transition: all 0.5s ease 0.2s
+    .link-container:nth-child(2)
+        transition: all 0.5s ease 0.3s
+    .link-container:nth-child(3)
+        transition: all 0.5s ease 0.4s
+    .link-container:nth-child(4)
+        transition: all 0.5s ease 0.5s
+
+    .link-container.fade
+        opacity: 1
+    .link-container:hover
+        border-bottom: none
+    .dropdown:hover > .dropdown-list
+        opacity: 0
+        visibility: hidden
+
+@media screen and ( max-width: 768px )
+    .nav-item
+        text-decoration: none
+        cursor: pointer

@@ -1,0 +1,29 @@
+.categoryPage
+    margin: 60px 205px 50px
+    color: $button_color
+    &_img
+        background-image: url("../images/category.svg")
+        width: 300px
+        height: 300px
+    &_categoryContainer
+        display: flex
+        flex-wrap: wrap
+        margin: auto
+        justify-content: center
+        a, a:visited, a:hover, a:active
+            color: $button_color
+            text-decoration: none
+        &_item
+            height: 240px
+            width: 300px
+            min-width: 300px
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 2px solid $text_color
+            font-weight: bold
+            font-size: 2rem
+
+@media screen and ( max-width: 1324px )
+    .categoryPage
+        margin: 50px 10px 0px
