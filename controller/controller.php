@@ -19,7 +19,7 @@ class Controller
 
 //    public function loadModal($name, $path = 'model/')
 //    {
-//        $name = $name . "Model";
+//        $name = $name . "mainModel";
 //        $path = $path . $name . '.php';
 //
 //        if (is_file($path)) {

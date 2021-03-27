@@ -14,7 +14,7 @@
     <nav class="login_navbar">
         <a href="#" class="login_navbar_title">AUCS</a>
         <div class="login_navbar_emptySpace"></div>
-        <a class="login_navbar_closeBtn" href="#"><i class="fas fa-times fa-4x"></i></a>
+        <a class="login_navbar_closeBtn" href="/"><i class="fas fa-times fa-4x"></i></a>
     </nav>
 
     <div class="login_container">
@@ -22,23 +22,19 @@
             <h1>Witamy w</h1>
             <h1 class="login_container_form_title">AUCS</h1>
             <p class="login_container_form_p">Zaloguj się by móc licytować oraz mieć wgląd do zakończonych i zakupionych aukcji</p>
-            <form action="" method="POST" class="login_container_form_formContianer">
+            <form action="/logowanie" method="POST" class="login_container_form_formContianer">
                 <label class="login_container_form_labelContainer">
-                    <input type="emial" class="login_container_form_Input" id="email" name="email" required>
+                    <input type="email" class="login_container_form_Input" id="email" name="email" required>
                     <span class="login_container_form_Placeholder">Email</span>
                 </label>
                 <label class="login_container_form_labelContainer">
                     <input type="password" class="login_container_form_Input" id="pwd" name="pwd" required>
                     <span class="login_container_form_Placeholder">Hasło</span>
                 </label>
-                <label class="login_container_form_labelContainer">
-                    <input type="password" class="login_container_form_Input" id="repwd" name="repwd" required>
-                    <span class="login_container_form_Placeholder">Powtórz hasło</span>
-                </label>
-                <p class="login_container_form_error"></p>
+                <p class="login_container_form_error"><?= $this->get("Error") ?></p>
                 <button type="submit" class="login_container_form_btn" name="submit">Zaloguj</button>
             </form>
-            <a href="#">
+            <a href="/rejestracja">
                 Nie masz konta? Zarejestruj się teraz
             </a>
         </div>

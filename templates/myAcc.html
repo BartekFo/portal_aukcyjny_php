@@ -2,7 +2,7 @@
 <div class="myAcc_wrapper">
     <div class="myAcc_wrapper_menuContainer">
         <div class="myAcc_wrapper_menuContainer_menu">
-            <a href="#" id="selected">Moje Konto</a>
+            <a href="/konto" id="selected">Moje Konto</a>
             <a href="#">Trwające aukcje</a>
             <a href="#">Stwórz aukcje</a>
         </div>
@@ -15,20 +15,23 @@
             <h1 class="myAcc_wrapper_dataContainer_title">Dane konta</h1>
             <button id="myAcc_wrapper_dataContainer_btn" class="myAcc_wrapper_dataContainer_changeDataBtn">Zmień</button>
             <h1 class="myAcc_wrapper_dataContainer_title">Imię i nazwisko</h1>
-            <p class="myAcc_wrapper_dataContainer_data">awdawdaw</p>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("nameAndSurname") ?></p>
             <h1 class="myAcc_wrapper_dataContainer_title">Email</h1>
-            <p class="myAcc_wrapper_dataContainer_data">dawdawd</p>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("email") ?></p>
             <h1 class="myAcc_wrapper_dataContainer_title">Telefon komórkowy</h1>
-            <p class="myAcc_wrapper_dataContainer_data">dawdawdaw</p>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("number") ?></p>
             <h1 class="myAcc_wrapper_dataContainer_title">Adres</h1>
-            <p class="myAcc_wrapper_dataContainer_data">dadwa</p>
-            <p class="myAcc_wrapper_dataContainer_data">dwada</p>
-            <p class="myAcc_wrapper_dataContainer_data">adwda</p>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("street") ?></p>
+            <br>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("zipCode") ?></p>
+            <br>
+            <p class="myAcc_wrapper_dataContainer_data"><?= $this->get("city") ?></p>
+            <br>
         </div>
     </div>
     <div class="myAcc_wrapper_dataWrapper invisible" id="changeDataContainer">
         <div class="myAcc_wrapper_dataContainer">
-            <form action="#" method="POST" class="myAcc_wrapper_dataContainer_form">
+            <form action="/konto" method="POST" class="myAcc_wrapper_dataContainer_form">
                 <div class="myAcc_wrapper_dataContainer_inputWrapper">
                     <input type="text" class="myAcc_wrapper_dataContainer_inputWrapper_input" name="nameAndSurname" required>
                     <div class="myAcc_wrapper_dataContainer_inputWrapper_underline"></div>

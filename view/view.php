@@ -42,23 +42,24 @@ class view
     {
         session_start();
         // Sprawdzenie czy w sesji jest token
-        if (isset($_SESSION['token'])) {
+        if (isset($_COOKIE['tokenID'])) {
             try {
-                //wygenerowanie dla tokenu daty i tokenu zapisanego w bazie
+                //generowanie daty dzisiejszej oraz zebranie daty z tokenu
                 $date = new DateTime(date("Y-m-d H:i:s"));
-                $dateToken = new DateTime(date($auth->getDateToken($_SESSION['idu'])));
+                $dateToken = new DateTime(date($auth->getDateToken()));
+                //sprawdzenie czy token jest jeszcze ważny
+                $interval = abs($date->getTimestamp() - $dateToken->getTimestamp()) / 60;
+                //sprawdzamy czy wartość tokenu w bazie jak ta w sesji i czy jeszcze nie wygasł
+                if ($interval < 5) {
+                    $auth->updateToken();
+                    return true;
+                } else {
+                    //jeśli wygasł to usuwamy token
+                    $auth->deleteToken();
+                    return false;
+                }
             } catch (Exception $e) {
                 print_r("error: " . $e);
-            }
-            //sprawdzenie czy token jest jeszcze ważny
-            $interval = abs($date->getTimestamp() - $dateToken->getTimestamp()) / 60;
-            if (($auth->getToken($_SESSION['idu']) === $_SESSION['token']) && ($interval < 5)) {
-                $auth->setLogin($_SESSION['email']);
-                $auth->updateToken($_SESSION['idu']);
-                return true;
-            } else {
-                $auth->deleteToken($_SESSION['idu']);
-                return false;
             }
         } else {
             return false;

@@ -36,16 +36,28 @@
                 </ul>
             </li>
             <li class="link-container tooltip">
-                <a class="nav-item inDevelopment" href="#">Kontakt</a><span class="tooltiptext">Dział obsługi klienta jest w trakcie rozwoju. W razie jakich kolwiek zastrzeżń prosimy o kontakt na email podany na dole strony</span>
+                <a class="nav-item" href="/konto">Moje konto</a>
             </li>
             <li class="link-container">
                 <a class="nav-item" href="/dostawa">Dostawa</a>
             </li>
             <li class="phone-nav-signin link-container">
-                <a class="nav-item" href="/logowanie">Zaloguj się</a>
+                <?php
+                if (isset($_COOKIE['id'])) {
+                    echo "<a class='nav-item' href='/logout'>Wyloguj się</a>";
+                } else {
+                    echo "<a class='nav-item' href='/logowanie'>Zaloguj się</a>";
+                }
+                ?>
             </li>
         </div>
         <div class="nav-signin">
-            <a class="nav-item" href="/logowanie">Zaloguj się</a>
+            <?php
+                if (isset($_COOKIE['id'])) {
+                    echo "<a class='nav-item' href='/logout'>Wyloguj się</a>";
+                } else {
+                    echo "<a class='nav-item' href='/logowanie'>Zaloguj się</a>";
+                }
+                ?>
         </div>
     </nav>
