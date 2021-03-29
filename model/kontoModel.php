@@ -2,38 +2,41 @@
 
 class kontoModel extends mainModel
 {
-    public string $nameAndSurname;
     public function getUser()
     {
         $con = $this->connectDb();
-        $userID = $_COOKIE['id'];
-        $sql = "SELECT * FROM users WHERE idusers = ".  $userID;
+        $dehashedID = $this->getDecodedUserID();
+        $sql = "SELECT * FROM users WHERE idusers = ".  $dehashedID;
         $result = $con->query($sql);
+        $con->close();
         return $result->fetch_assoc();
     }
 
-    public function getNameAndSurname()
+    public function updateUserData()
     {
-        if (isset($this->nameAndSurname))
-        {
-            return $this->nameAndSurname;
+        $nameAndSurname = $_POST['nameAndSurname'];
+        $email = $_POST['email'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $street = $_POST['street'];
+        $zip = $_POST['zip'];
+        $city = $_POST['city'];
+
+        $con = $this->connectDb();
+        $dehashedID = $this->getDecodedUserID();
+        $sql = 'UPDATE users SET name_surname = ?, email = ?, number = ?, street = ?, zip_code = ?, city = ? WHERE idusers = ?';
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param('ssisssd', $nameAndSurname, $email, $phoneNumber, $street, $zip, $city, $dehashedID);
+        $stmt->execute();
+        if($stmt->num_rows < 0) {
+            $stmt->close();
+            $con->close();
+            return false;
+        } else {
+            $stmt->close();
+            $con->close();
+            return true;
         }
-    }
 
-    public function getEmail(){
-        $arr = $this->getUser();
-        return $arr['email'];
     }
-
-    public function getPhoneNumber(){
-        $arr = $this->getUser();
-        return $arr['number'];
-    }
-
-    public function getStreet(){
-        $arr = $this->getUser();
-        return $arr['street'];
-    }
-
 
 }

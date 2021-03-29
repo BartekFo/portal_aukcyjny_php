@@ -5,8 +5,14 @@ class kontoView extends view
     {
         $model = $this->loadModel('konto');
         $auth = $this->loadModel('signup');
+        $this->set('Error', "");
         if($this->isLogged($auth))
         {
+            if(isset($_POST['submitUserData'])){
+                if(!$model->updateUserData()) {
+                    $this->set('Error', 'Błąd systemu. Spróbuj ponownie później');
+                }
+            }
             $userArr = $model->getUser();
             $nameAndSurname = $userArr['name_surname'];
             $email = $userArr['email'];

@@ -27,9 +27,9 @@ class logowanieModel extends mainModel
                     if(password_verify($_POST['pwd'], $password)) {
                         $stmt->close();
                         $con->close();
+                        $hashedID = base64_encode($id);
                         $this->setToken($id);
-                        setcookie('id', $id, 2147483647);
-                        $this->setSession($userID, $email, $this->token);
+                        setcookie('id', $hashedID, 2147483647);
                         return true;
                     } else {
                         $stmt->close();

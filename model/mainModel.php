@@ -21,13 +21,6 @@ class mainModel
         }
     }
 
-    public function setSession($id, $email, $token)
-    {
-        $_SESSION['idu'] = $id;
-        $_SESSION['email'] = $email;
-        $_SESSION['token'] = $token;
-    }
-
     public function setToken($id): bool
     {
         $con = $this->connectDb();
@@ -43,8 +36,9 @@ class mainModel
                 $result = $con->query($sql);
                 $resArr = $result->fetch_array();
                 $tokenID = $resArr[0];
+                $hasehedTokenID = base64_encode($tokenID);
                 $con->close();
-                setcookie('tokenID', $tokenID, 2147483647);
+                setcookie('tokenID', $hasehedTokenID, 2147483647);
                 return true;
             } else {
                 $con->close();
@@ -71,25 +65,35 @@ class mainModel
         return $token;
     }
 
+    public function getDecodedUserID()
+    {
+        return base64_decode($_COOKIE['id']);
+    }
+
     public function getTokenFromCookie()
     {
-        return $_COOKIE['tokenID'];
+        return base64_decode($_COOKIE['tokenID']);
     }
 
     public function getDateToken()
     {
         $tokenID = $this->getTokenFromCookie();
+        $userID = $this->getDecodedUserID();
         $con = $this->connectDb();
-        $sql = "SELECT token_date FROM tokens WHERE idtokens = ?";
+        $sql = "SELECT token_date FROM tokens WHERE idtokens = ? AND idusera = ?";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param('d', $tokenID);
+        $stmt->bind_param('dd', $tokenID, $userID);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($date);
-        $stmt->fetch();
-        $stmt->free_result();
-        $con->close();
-        return $date;
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($date);
+            $stmt->fetch();
+            $stmt->free_result();
+            $con->close();
+            return $date;
+        } else {
+            return false;
+        }
     }
 
     public function updateToken(): bool
@@ -115,11 +119,14 @@ class mainModel
 
     public function deleteToken(): bool
     {
+        setcookie('tokenID', "", time() - 3600);
+        setcookie('id', "", time() - 3600);
         $tokenID = $this->getTokenFromCookie();
+        $userID = $this->getDecodedUserID();
         $con = $this->connectDb();
-        $sql = "DELETE FROM tokens WHERE idtokens = ?";
+        $sql = "DELETE FROM tokens WHERE idtokens = ? AND idusera = ?";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param('d', $tokenID);
+        $stmt->bind_param('dd', $tokenID, $userID);
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows() > 0) {
@@ -136,8 +143,6 @@ class mainModel
     public function logout()
     {
         $this->deleteToken();
-        setcookie('tokenID', "", time() - 3600);
-        setcookie('id', "", time() - 3600);
         session_destroy();
     }
 }

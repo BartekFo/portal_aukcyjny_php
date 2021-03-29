@@ -38,19 +38,25 @@ class signupModel extends mainModel
                             if($result->num_rows > 0) {
                                 $resArr = $result->fetch_array();
                                 $userID = $resArr[0];
-                                setcookie('id', $userID, 2147483647);
+                                $stmt->close();
+                                $con->close();
+                                $hashedID = base64_encode($userID);
                                 $this->setToken($userID);
-                                $this->setSession($userID, $email, $this->token);
+                                setcookie('id', $hashedID, 2147483647);
                                 return true;
                             } else {
+                                $stmt->close();
+                                $con->close();
                                 return "Błąd systemu!";
                             }
                         }
                     } else {
+                        $con->close();
                         return "Hasła się nie zgadzają. Upewnij się, że podałeś je poprawnie";
                     }
                 }
             } else {
+                $con->close();
                 return "Niepoprawny email!";
             }
         }
