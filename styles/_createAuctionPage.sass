@@ -104,6 +104,38 @@ input[type=radio]
 .visibleChecboxItem
     color: $button_color !important
 
+.createAuction_select
+    padding: 8px 12px
+    color: $text_color
+    border: 1px solid $text_color
+    cursor: pointer
+    border-radius: 5px
+
+    appearance: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="50"><polygon points="0,0 100,0 50,50" style="fill:%23666666;" /></svg>')
+    background-position: right 10px top 50%
+    background-repeat: no-repeat
+    background-size: 10px
+    padding-right: 30px
+    font-size: 1.4rem
+    width: 250px
+    &:hover, &:focus
+        outline: none
+        border: 2px solid $text_color
+
+.createAuction_date
+    width: 250px
+    border: 1px solid $text_color
+    font-size: 1.4rem
+    color: $text_color
+    padding: 8px 12px
+    border-radius: 5px
+    &:hover, &:focus
+        outline: none
+        border: 2px solid $text_color
+
 @media screen and ( max-width: 680px )
     .createAuction_formWrapper
         width: 100%

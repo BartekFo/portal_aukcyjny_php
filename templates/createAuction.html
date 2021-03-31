@@ -22,6 +22,12 @@
                     <label class="createAuction_formWrapper_inputWrapper_label">Nazwa przedmiotu</label>
                 </div>
                 <div>
+                    <h1 class="createAuction_formWrapper_title">Zdjęcie aukcji</h1>
+                    <input type="file" name="image" id="image">
+                    <input type="file" name="image" id="image">
+                    <input type="file" name="image" id="image">
+                </div>
+                <div>
                     <label for="itemDescription" class="createAuction_formWrapper_inputWrapper_textareaLabel">Opis przedmiotu</label>
                     <textarea class="createAuction_formWrapper_inputWrapper_textarea" name="itemDescription" id="itemDescription" cols="40" rows="10" maxlength="2000" required></textarea>
                     <!-- <input type="text" class="createAuction_formWrapper_inputWrapper_input" name="email" required> -->
@@ -32,6 +38,24 @@
                     <div class="createAuction_formWrapper_inputWrapper_underline"></div>
                     <label class="createAuction_formWrapper_inputWrapper_label">Cena wywoławcza (zł)</label>
                 </div>
+                <h1 class="createAuction_formWrapper_title">Kategoria</h1>
+                <select name="cateogryOfProduct" class="createAuction_select">
+                    <option disabled selected>Wybierz...</option>
+                    <option value="meble">Meble</option>
+                    <option value="ubrania">Ubrania</option>
+                    <option value="gry">Gry</option>
+                    <option value="motoryzacja">Motoryzacja</option>
+                    <option value="rtvagd">RTV i AGD</option>
+                    <option value="uroda">Uroda</option>
+                    <option value="sport">Sport i turystyka</option>
+                    <option value="zdrowie">Zdrowie</option>
+                </select>
+
+                <h1 class="createAuction_formWrapper_title">Termin wygaśnięcia aukcji</h1>
+                <div id="createAuction_dateWrapper">
+                    <input type="date" name="deadline" id="deadline" class="createAuction_date" max="2021-04-20">
+                </div>
+
                 <h1 class="createAuction_formWrapper_title">Stan przedmiotu</h1>
                 <div>
                     <label class="createAuction_formWrapper_inputWrapper_radioLabel" for="stateOfUseRadio1">
