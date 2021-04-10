@@ -14,7 +14,8 @@
 
     <div class="myAcc_wrapper_dataWrapper" id="changeDataContainer">
         <div class="createAuction_formWrapper">
-            <form action="" method="POST">
+            <p class="login_container_form_error"><?= $this->get("Error") ?></p>
+            <form action="/wystaw" method="POST" enctype="multipart/form-data">
                 <h1 class="createAuction_formWrapper_title">Dane aukcji</h1>
                 <div class="createAuction_formWrapper_inputWrapper">
                     <input type="text" class="createAuction_formWrapper_inputWrapper_input" name="itemName" required>
@@ -23,8 +24,6 @@
                 </div>
                 <div>
                     <h1 class="createAuction_formWrapper_title">Zdjęcie aukcji</h1>
-                    <input type="file" name="image" id="image">
-                    <input type="file" name="image" id="image">
                     <input type="file" name="image" id="image">
                 </div>
                 <div>
@@ -74,23 +73,23 @@
                 <h1 class="createAuction_formWrapper_title">Metody dostawy</h1>
                 <div class="createAuction_formWrapper_inputWrapper_checkboxWrapper">
                     <label class="createAuction_formWrapper_inputWrapper_checkboxLabel" for="delivery-1">
-                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery-1" id="delivery-1"><i class="checkboxIcon fa-lg fas fa-times "></i>
+                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery[]" id="delivery-1" value="List polecony priorytetowy"><i class="checkboxIcon fa-lg fas fa-times "></i>
                         List polecony priorytetowy
                     </label>
                     <label class="createAuction_formWrapper_inputWrapper_checkboxLabel" for="delivery-2">
-                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery-2" id="delivery-2"><i class="checkboxIcon fa-lg fas fa-times "></i>
+                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery[]" id="delivery-2" value="Paczkomat"><i class="checkboxIcon fa-lg fas fa-times "></i>
                         Paczkomat
                     </label>
                     <label class="createAuction_formWrapper_inputWrapper_checkboxLabel" for="delivery-3">
-                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery-3" id="delivery-3"><i class="checkboxIcon fa-lg fas fa-times "></i>
+                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery[]" id="delivery-3" value="Dostawa przez sprzedającego"><i class="checkboxIcon fa-lg fas fa-times "></i>
                         Dostawa przez sprzedającego
                     </label>
                     <label class="createAuction_formWrapper_inputWrapper_checkboxLabel" for="delivery-4">
-                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery-4" id="delivery-4"><i class="checkboxIcon fa-lg fas fa-times "></i>
+                        <input class="createAuction_formWrapper_inputWrapper_checkbox" type="checkbox" name="delivery[]" id="delivery-4" value="Paczka pocztowa priorytetowa"><i class="checkboxIcon fa-lg fas fa-times "></i>
                         Paczka pocztowa priorytetowa
                     </label>
                 </div>
-                <button type="submit" class="login_container_form_btn" name="submit">Wystaw przedmiot</button>
+                <button type="submit" class="login_container_form_btn" name="submitAuction">Wystaw przedmiot</button>
             </form>
         </div>
     </div>

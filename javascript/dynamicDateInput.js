@@ -6,17 +6,16 @@ function formatISOLocal(d) {
     return d.getFullYear()+'-'+z(d.getMonth()+1) + '-' +z(d.getDate())
 }
 
+function formatISOLocalNextMonth(d) {
+    let z = n => ('0' + n).slice(-2)
+    return d.getFullYear()+'-'+z(d.getMonth()+2) + '-' +z(d.getDate())
+}
+
 window.onload = function () {
     let d = new Date()
     dateInput.min = formatISOLocal(d)
     let nextMonth
     dateInput.defaultValue = dateInput.min
-    const currentDayOfMonth = d.getDate()-2
-    const currentMonth = d.getMonth()+2
-    if (currentMonth < 10) {
-       nextMonth = "0" + currentMonth;
-    }
-    const currentYear = d.getFullYear()
-    dateInput.max = currentYear + "-" + nextMonth + "-" + currentDayOfMonth
+    dateInput.max = formatISOLocalNextMonth(d);
     console.log(dateInput.outerHTML)
 }
