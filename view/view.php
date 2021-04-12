@@ -3,7 +3,7 @@ class view
 {
     public function render($name, $path = "templates/")
     {
-        $path = $path . $name . ".html";
+        $path = $path . $name . ".php";
         if (is_file($path)) {
             require $path;
         }

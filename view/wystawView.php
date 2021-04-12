@@ -12,6 +12,7 @@ class wystawView extends view
                 if(!$model->addAuction()){
                     $this->set('Error', 'Coś poszło nie tak. Upewnij się, że plik nie jest za duży i podałeś wszystkie dane');
                 }
+                    $this->redirect('wystawiam');
             }
             $this->render("createAuction");
         } else {

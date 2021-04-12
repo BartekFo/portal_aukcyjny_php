@@ -26,9 +26,9 @@ class createAuctionModel extends mainModel
                     return false;
                 } else {
                     move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/auctionImages/" . $imageName . "." . $roz[1]);
-                    $sql = "INSERT INTO auctions VALUES (NULL,?,?,?,?,?,?,?,?,?)";
+                    $sql = "INSERT INTO auctions VALUES (NULL,?,?,?,?,?,?,?,?,?,?)";
                     $stmt = $con->prepare($sql);
-                    $stmt->bind_param('dsssdssss', $userID, $name, $imageName, $description, $price, $category, $date, $stateOfUse, $strDelivery);
+                    $stmt->bind_param('dsssddssss', $userID, $name, $imageName, $description, $price, $price, $category, $date, $stateOfUse, $strDelivery);
                     $stmt->execute();
                     return true;
                 }

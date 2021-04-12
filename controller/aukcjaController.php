@@ -1,6 +1,6 @@
 <?php
 
-class rtvagdController extends Controller
+class aukcjaController extends Controller
 {
     public function __construct($request, $param='')
     {

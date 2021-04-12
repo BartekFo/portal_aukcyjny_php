@@ -1,7 +1,7 @@
 <?php
 class kontoView extends view
 {
-    public function __construct()
+    public function __construct( $param='' )
     {
         $model = $this->loadModel('konto');
         $auth = $this->loadModel('signup');
