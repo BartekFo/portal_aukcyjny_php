@@ -5,6 +5,17 @@ class aukcjaView extends view
     public function __construct( $param='' )
     {
         $model = $this->loadModel('singleItem');
+        $auth = $this->loadModel("logowanie");
+        $this->set('Error', '');
+        if (isset($_POST['submitNewPrice'])) {
+            if ($this->isLogged($auth)) {
+                if (!$model->bidAuction($param)) {
+                    $this->set('Error', 'Cena jest jest za niska lub równa z aktualną ceną');
+                }
+            } else {
+                $this->set('Error', 'Musisz być zalogowany by licytować');
+            }
+        }
         $auctionArr = $model->getAuctionDetail($param);
         $auctionName = $auctionArr['auction_name'];
         $auctionImageName = $auctionArr['auction_image_name'];
@@ -19,6 +30,7 @@ class aukcjaView extends view
         $a = time();
         $timeDiff = $deadlineTimestamp - $a;
         $timeDiff = ((($timeDiff/60)/60)/24);
+        $this->set('auctionID', $param);
         $this->set('auctionName', $auctionName);
         $this->set('auctionImageName', $auctionImageName);
         $this->set('auctionDesc', $auctionDesc);

@@ -23,7 +23,7 @@
 
         </div>
         <div class="itemPage_container_infoContainer_priceInputContainer">
-            <form action="#" method="POST">
+            <form action="/aukcja<?= $this->get("auctionID")?>" method="POST">
                 <label for="price" class="itemPage_container_infoContainer_priceInputContainer_label">
                     <input type="number" id="price" class="itemPage_container_infoContainer_priceInputContainer_priceInput" required name="price">
                     <span class="itemPage_container_infoContainer_priceInputContainer_placeholder">Twoja oferta</span>
@@ -34,7 +34,8 @@
                     </span>
                     <p class="itemPage_container_infoContainer_priceInputContainer_auctionEndInfo_p">(<?= $this->get("auctionDeadline") ?>)</p>
                 </div>
-                <button type="submit" name="submit" class="itemPage_container_infoContainer_priceInputContainer_submitButton">Licytuj</button>
+                <p class="login_container_form_error"><?= $this->get("Error") ?></p>
+                <button type="submit" name="submitNewPrice" class="itemPage_container_infoContainer_priceInputContainer_submitButton">Licytuj</button>
             </form>
         </div>
 
