@@ -4,8 +4,10 @@ class zdrowieView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('zdrowie');
-        $this->set('Title', $title->zdrowieTitle());
+        $model = $this->loadModel('zdrowie');
+        $auctionsArr = $model->getZdrowieAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->zdrowieTitle());
         $this->render("chosenCategory");
     }
 }

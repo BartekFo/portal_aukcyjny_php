@@ -140,6 +140,17 @@ class mainModel
         }
     }
 
+    public function deleteOlderAuctions()
+    {
+//        $con = $this->connectDb();
+//        $sql = 'SELECT * FROM'
+//        $d = DateTime::createFromFormat('Y-m-d', $auctionDeadline);
+//        $deadlineTimestamp = $d->getTimestamp();
+//        $a = time();
+//        $timeDiff = $deadlineTimestamp - $a;
+//        $timeDiff = ((($timeDiff/60)/60)/24);
+    }
+
     public function logout()
     {
         $this->deleteToken();

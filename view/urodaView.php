@@ -4,8 +4,10 @@ class urodaView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('uroda');
-        $this->set('Title', $title->urodaTitle());
+        $model = $this->loadModel('uroda');
+        $auctionsArr = $model->getUrodaAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->urodaTitle());
         $this->render("chosenCategory");
     }
 }

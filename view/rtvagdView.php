@@ -4,8 +4,10 @@ class rtvagdView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('rtvagd');
-        $this->set('Title', $title->rtvagdTitle());
+        $model = $this->loadModel('rtvagd');
+        $auctionsArr = $model->getRtvagdAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->rtvagdTitle());
         $this->render("chosenCategory");
     }
 }

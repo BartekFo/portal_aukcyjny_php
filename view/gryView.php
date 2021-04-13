@@ -4,8 +4,10 @@ class gryView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('gry');
-        $this->set('Title', $title->gryTitle());
+        $model = $this->loadModel('gry');
+        $auctionsArr = $model->getGryAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->gryTitle());
         $this->render("chosenCategory");
     }
 }

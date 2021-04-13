@@ -4,8 +4,10 @@ class sportView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('sport');
-        $this->set('Title', $title->sportTitle());
+        $model = $this->loadModel('sport');
+        $auctionsArr = $model->getSportAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->sportTitle());
         $this->render("chosenCategory");
     }
 }

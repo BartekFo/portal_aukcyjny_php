@@ -4,8 +4,10 @@ class motoryzacjaView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('motoryzacja');
-        $this->set('Title', $title->motoryzacjaTitle());
+        $model = $this->loadModel('motoryzacja');
+        $auctionsArr = $model->getMotoryzacjaAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->motoryzacjaTitle());
         $this->render("chosenCategory");
     }
 }

@@ -28,7 +28,7 @@ class singleItemModel extends mainModel
             $stmt->bind_param('iii', $newPrice, $userID , $auction_IDTrimmed);
             $stmt->execute();
 
-            $sql = "SELECT auctioned_auction_id, auctioned_user_id FROM auctioned where auctioned_auction_id = ". $auction_IDTrimmed ." and auctioned_user_id = " . $userID;
+            $sql = "SELECT * FROM auctioned where auctioned_auction_id = ". $auction_IDTrimmed ." and auctioned_user_id = " . $userID;
             $result = $con->query($sql);
             if ($result->num_rows < 1) {
                 $sql = 'INSERT INTO auctioned (auctioned_auction_id, auctioned_user_id) VALUES ('.$auction_IDTrimmed.', '. $userID .')';

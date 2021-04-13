@@ -4,8 +4,10 @@ class ubraniaView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('ubrania');
-        $this->set('Title', $title->ubraniaTitle());
+        $model = $this->loadModel('ubrania');
+        $auctionsArr = $model->getUbraniaAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->ubraniaTitle());
         $this->render("chosenCategory");
     }
 }

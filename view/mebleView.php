@@ -3,8 +3,10 @@ class mebleView extends view
 {
     public function __construct()
     {
-        $title = $this->loadModel('meble');
-        $this->set('Title', $title->mebleTitle());
+        $model = $this->loadModel('meble');
+        $auctionsArr = $model->getMotoryzacjaAuctions();
+        $this->set('auctions', $auctionsArr);
+        $this->set('Title', $model->mebleTitle());
         $this->render("chosenCategory");
     }
 }
